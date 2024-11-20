@@ -34,3 +34,26 @@ thread.add(func);
 //Calls would happen on the side thread
 EA::MessageQueue::sleepThread(3000);
 ```
+
+To build the examples, you can use this on Mac:
+```
+cmake -G Xcode -B build -D BUILD_EXAMPLES=1
+```
+Or on Windows:
+```
+cmake -G "Visual Studio 17 2022" -B build -D BUILD_EXAMPLES=1
+```
+
+When linking directly against it in CMake, you can just link against this interface lib:
+```cmake
+target_link_libraries(MyApp PRIVATE MessageQueue)
+```
+
+And then include either:
+```c++
+#include <MessageQueue/Queue.h>
+```
+Or:
+```c++
+#include <MessageQueue/Thread.h>
+```
